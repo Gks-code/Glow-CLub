@@ -76,11 +76,19 @@ a{color:var(--accent)} a:hover{color:#1A2F9A}
 .dual-btn-secondary{background:transparent;border:2px solid #AAB7BE;color:var(--on-ink)}
 .dual-btn-secondary:hover{background:rgba(255,255,255,.08);border-color:#fff;color:#fff;transform:translateY(-2px)}
 
-/* Produtos */
+/* Produtos & Filtros */
 .produtos{background:var(--bg-2);border-top:2px solid var(--ink)}
-.produtos .wrap{padding-block:64px 88px;display:flex;flex-direction:column;gap:28px}
+.produtos .wrap{padding-block:64px 88px;display:flex;flex-direction:column;gap:24px}
 .produtos-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px}
 .produtos h2,.sec-title{font-size:clamp(44px,5vw,64px)}
+
+.filtros-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.filtro-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:2px solid var(--ink);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,transform .1s,box-shadow .15s}
+.filtro-btn:hover{background:var(--panel);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--ink)}
+.filtro-btn[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);transform:none;box-shadow:none}
+.filtro-qtd{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:22px;padding:0 7px;border-radius:999px;background:var(--bg);color:var(--ink);font-size:12px;font-weight:800}
+.filtro-btn[aria-pressed="true"] .filtro-qtd{background:var(--accent);color:#fff}
+
 .busca{position:relative;max-width:520px;width:100%}
 .busca svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
 .busca input{width:100%;min-height:52px;padding:0 48px 0 46px;border:2px solid var(--ink);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;font-size:16px}
@@ -92,8 +100,8 @@ a{color:var(--accent)} a:hover{color:#1A2F9A}
 .vazio button{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
 .contagem{margin:0;color:var(--muted);font-size:15px}
 .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
-/* Card de produto (mesmo estilo da página) */
-.grade{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+
+/* Card de produto */
 .card{position:relative;display:flex;flex-direction:column;background:var(--card);border:2px solid var(--ink);border-radius:14px;overflow:hidden;transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--ink)}
 .card-selo{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;letter-spacing:.02em}
@@ -125,7 +133,6 @@ a{color:var(--accent)} a:hover{color:#1A2F9A}
 .card.esgotado .b-comprar{background:#9CA3AF;border-color:#9CA3AF;color:#fff;cursor:not-allowed;pointer-events:none}
 .card.esgotado .b-comprar:hover{background:#9CA3AF}
 .b-comprar.esgotado-btn{background:#9CA3AF;border-color:#9CA3AF;color:#fff;cursor:not-allowed}
-
 
 /* Detalhes do produto */
 dialog.detalhe{width:min(520px,calc(100% - 32px));max-height:calc(100% - 32px);padding:0;border:2px solid var(--ink);border-radius:14px;background:var(--card);color:var(--ink)}
@@ -209,7 +216,6 @@ dialog.carrinho::backdrop{background:rgba(22,34,43,.5)}
 .car-aviso button{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
 @media (max-width:420px){ .campo.c2,.campo.c3,.campo.c4{grid-column:span 6} .btn-carrinho .txt{display:none} }
 
-
 /* Dúvidas */
 .duvidas{border-top:2px solid var(--ink);background:var(--bg-2)}
 .duvidas .wrap{padding-block:72px 88px;display:flex;flex-wrap:wrap;gap:40px}
@@ -230,7 +236,6 @@ footer .nav{font-size:14px;align-content:flex-start}
 footer .nav a{color:#C9D3D8}
 footer .nav a:first-child{color:var(--on-ink)}
 
-
 /* ===== Mobile ===== */
 @media (max-width: 900px) {
   .wrap { padding-inline: 16px; }
@@ -241,7 +246,7 @@ footer .nav a:first-child{color:var(--on-ink)}
   .dual-path { padding-block: 48px 56px; }
   .dual-path h2 { font-size: clamp(40px, 9vw, 64px); }
   .dual-path p { font-size: 16px; }
-  .produtos .wrap { padding-block: 40px 56px; gap: 18px; }
+  .produtos .wrap { padding-block: 40px 56px; gap: 16px; }
   .produtos h2, .sec-title { font-size: clamp(32px, 8vw, 48px); }
   .grade { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
   .card h3 { font-size: 22px; margin: 8px 0 12px; }
@@ -278,6 +283,22 @@ footer .nav a:first-child{color:var(--on-ink)}
   .dual-btn { width: 100%; min-height: 64px; }
   .produtos .wrap { padding-block: 32px 48px; gap: 14px; }
   .produtos h2, .sec-title { font-size: 34px; }
+
+  /* Carrossel horizontal de filtros no celular */
+  .filtros-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-inline: -16px;
+    padding-inline: 16px;
+    padding-bottom: 4px;
+    gap: 8px;
+  }
+  .filtros-bar::-webkit-scrollbar { display: none; }
+  .filtro-btn { min-height: 40px; padding: 0 14px; font-size: 14px; flex: 0 0 auto; }
+  .filtro-btn:hover { transform: none; box-shadow: none; }
+
   .busca input { min-height: 46px; font-size: 15px; }
   .contagem { font-size: 13px; }
   /* 2 colunas no celular */
@@ -326,7 +347,6 @@ footer .nav a:first-child{color:var(--on-ink)}
   .mq-group[aria-hidden] { display: none; }
 }
 
-
 /* Header: always one row */
 .topbar{position:relative;z-index:20;background:var(--bg)}
 .topbar-inner{
@@ -367,12 +387,11 @@ footer .nav a:first-child{color:var(--on-ink)}
   .btn-wa{width:42px;padding:0;justify-content:center}
   .topbar-inner .logo img{height:40px !important;max-width:120px}
 }
-
 </style>
 </head>
 <body>
 
-<header class="topbar">
+<header class="topbar" id="inicio">
   <div class="wrap topbar-inner">
     <a class="logo" href="#inicio"><img src="glowclub-logo.svg" alt="Glow Club" width="156" height="64"></a>
 
@@ -467,15 +486,16 @@ footer .nav a:first-child{color:var(--on-ink)}
   <div class="mq"><div class="mq-track" id="marcas"></div></div>
 </section>
 
-
-
-  
-
+<main>
   <section class="produtos" id="produtos">
     <div class="wrap">
       <div class="produtos-head">
         <h2 class="cond">Produtos</h2>
       </div>
+
+      <!-- Filtros por categoria -->
+      <div class="filtros-bar" id="filtros" role="group" aria-label="Filtrar por categoria"></div>
+
       <form class="busca" role="search" id="busca-form">
         <label for="busca" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Pesquisar produtos</label>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -534,17 +554,21 @@ const CONFIG = {
   ]
 };
 
-// Categorias: cor de fundo do card e cor do pote ilustrado (usado quando não há foto)
+// Categorias e rótulos dos filtros
 const CATEGORIAS = [
-  { id: 'emagrecedores',  nome: 'Emagrecimento',  fundo: '#D7DEF7', pote: '#2747D8' },
-  { id: 'hormonios',  nome: 'Hormônios',   fundo: '#F5DED3', pote: '#C2410C' },
-  { id: 'peptideos',  nome: 'Peptídeos', fundo: '#D6ECE4', pote: '#0E7C66' }
+  { id: 'emagrecedores', nome: 'Emagrecedores', fundo: '#D7DEF7', pote: '#2747D8' },
+  { id: 'peptideos',     nome: 'Peptídeos',     fundo: '#D6ECE4', pote: '#0E7C66' },
+  { id: 'hormonios',     nome: 'Anabolizantes', fundo: '#F5DED3', pote: '#C2410C' }
 ];
 
-// Produtos: troque pelos seus. PREÇOS ABAIXO SÃO SÓ EXEMPLO.
-// origem: texto azul do card (ex.: 'Nacional', 'Importado') · destaque: true mostra o selo
-// descricao: aparece ao clicar em "Detalhes" · foto: opcional (ex.: 'img/produto.png')
-// Load product data and map to site format
+const FILTROS = [
+  { id: 'todos',         label: 'Todos' },
+  { id: 'emagrecedores', label: 'Emagrecedores' },
+  { id: 'peptideos',     label: 'Peptídeos' },
+  { id: 'hormonios',     label: 'Anabolizantes' },
+  { id: 'destaques',     label: 'Destaques' }
+];
+
 const PRODUCTS_DATA = [
   {id:`em-tg`,slug:`tg-nacional-60mg-15mg-x-4-frascos`,name:`TG`,presentation:`60mg (15mg x 4 frascos)`,shortDescription:`Nacional · 60mg (15mg x 4 frascos)`,categorySlug:`emagrecedores`,brand:`Nacional`,price:849,compareAtPrice:979,imageUrl:`imgs/01dc2a61-77ff-4c5b-63c6-d25ded4aa900_public.jpg`,featured:true,onSale:true,sortOrder:0},
   {id:`em-tirzec`,slug:`tirzec-nacional-60mg-15mg-x-4-frascos`,name:`Tirzec`,presentation:`60mg (15mg x 4 frascos)`,shortDescription:`Nacional · 60mg (15mg x 4 frascos)`,categorySlug:`emagrecedores`,brand:`Nacional`,price:799,compareAtPrice:null,imageUrl:`imgs/c7539696-7f87-41bc-669b-4d0dd4df5800_card.jpg`,featured:true,onSale:false,sortOrder:1},
@@ -682,7 +706,6 @@ document.querySelectorAll('[data-wa]').forEach(a => {
   a.target = '_blank'; a.rel = 'noopener';
 });
 
-// Botão "Sou revendedor" → WhatsApp com mensagem de catálogo para revenda
 const btnRevenda = document.getElementById('btn-revenda');
 if (btnRevenda) {
   btnRevenda.href = wa(`Olá! Vim pelo site da ${CONFIG.marca} e quero o catálogo para revenda.`);
@@ -713,8 +736,9 @@ const track = document.getElementById('marcas');
   track.appendChild(g);
 });
 
-// Produtos
+// Produtos e Filtros
 const catPorId = Object.fromEntries(CATEGORIAS.map(c => [c.id, c]));
+let categoriaAtiva = 'todos';
 
 const pote = (cor) => `<svg width="120" height="160" viewBox="0 0 120 160" role="img" aria-label="Foto do produto em breve"><rect x="22" y="6" width="76" height="22" rx="5" fill="#16222B"/><rect x="12" y="28" width="96" height="128" rx="14" fill="${cor}"/><rect x="12" y="66" width="96" height="48" fill="#F6F8F8"/><rect x="24" y="78" width="52" height="8" rx="2" fill="#16222B"/><rect x="24" y="94" width="34" height="6" rx="2" fill="#7B8890"/></svg>`;
 
@@ -725,7 +749,6 @@ function fotoDe(p) {
   return p.foto ? `<img src="${esc(p.foto)}" alt="${esc(p.nome)}" loading="lazy">` : pote(catPorId[p.categoria]?.pote || '#2F6FD0');
 }
 
-// Preço + PIX + parcelas (calculados a partir do preço)
 function precoHTML(p) {
   const v = valor(p.preco);
   if (v === null) return `<span class="consulta">${esc(p.preco)}</span>`;
@@ -734,13 +757,40 @@ function precoHTML(p) {
   return `<span class="valor">${brl(v)}</span>${pix}${parc}`;
 }
 
+function pertenceCategoria(p, catId) {
+  if (catId === 'todos') return true;
+  if (catId === 'destaques') return !!p.destaque;
+  return p.categoria === catId;
+}
+
+function renderFiltros() {
+  const bar = document.getElementById('filtros');
+  bar.innerHTML = FILTROS.map(f => {
+    const qtd = PRODUTOS.filter(p => pertenceCategoria(p, f.id)).length;
+    const ativo = categoriaAtiva === f.id;
+    return `<button type="button" class="filtro-btn" data-cat="${esc(f.id)}" aria-pressed="${ativo}">
+      <span>${esc(f.label)}</span>
+      <span class="filtro-qtd">${qtd}</span>
+    </button>`;
+  }).join('');
+}
+
+document.getElementById('filtros').addEventListener('click', e => {
+  const btn = e.target.closest('[data-cat]');
+  if (!btn) return;
+  categoriaAtiva = btn.dataset.cat;
+  renderFiltros();
+  renderProdutos();
+});
+
 // Pesquisa: ignora maiúsculas e acentos, e aceita várias palavras em qualquer ordem
-const normalizar = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const normalizar = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 const campoBusca = document.getElementById('busca');
 const btnLimpar = document.getElementById('busca-limpar');
 let termo = '';
 
 function bate(p) {
+  if (!pertenceCategoria(p, categoriaAtiva)) return false;
   if (!termo) return true;
   const texto = normalizar(`${p.nome} ${p.marca} ${p.origem || ''} ${p.tamanho} ${catPorId[p.categoria]?.nome || ''}`);
   return normalizar(termo).split(/\s+/).filter(Boolean).every(palavra => texto.includes(palavra));
@@ -748,12 +798,16 @@ function bate(p) {
 
 function renderProdutos() {
   const itens = PRODUTOS.filter(bate);
+  const filtroObj = FILTROS.find(f => f.id === categoriaAtiva);
+  const nomeFiltro = (categoriaAtiva !== 'todos' && filtroObj) ? ` em ${filtroObj.label}` : '';
+
   if (!itens.length) {
     document.getElementById('grade').innerHTML =
-      `<p class="vazio">Nenhum produto encontrado para “${esc(termo)}”. <button type="button" data-limpar>Limpar pesquisa</button></p>`;
+      `<p class="vazio">Nenhum produto encontrado${termo ? ` para “${esc(termo)}”` : ''}${nomeFiltro}. <button type="button" data-reset-filtros>Ver todos os produtos</button></p>`;
     document.getElementById('contagem').textContent = '0 produtos';
     return;
   }
+
   document.getElementById('grade').innerHTML = itens.map(p => {
     const k = esc(chave(p));
     const esgotado = !!p.esgotado;
@@ -780,14 +834,22 @@ function renderProdutos() {
       </div>
     </article>`;
   }).join('');
+
   const n = itens.length;
   document.getElementById('contagem').textContent =
-    `${n} ${n === 1 ? 'produto' : 'produtos'}` + (termo ? ` para “${termo}”` : '');
+    `${n} ${n === 1 ? 'produto' : 'produtos'}${nomeFiltro}` + (termo ? ` para “${termo}”` : '');
 }
 
 function limparBusca() {
   campoBusca.value = ''; termo = ''; btnLimpar.hidden = true;
   renderProdutos(); campoBusca.focus();
+}
+
+function resetarTudo() {
+  campoBusca.value = ''; termo = ''; btnLimpar.hidden = true;
+  categoriaAtiva = 'todos';
+  renderFiltros();
+  renderProdutos();
 }
 
 campoBusca.addEventListener('input', () => {
@@ -798,7 +860,9 @@ campoBusca.addEventListener('input', () => {
 campoBusca.addEventListener('keydown', e => { if (e.key === 'Escape') limparBusca(); });
 document.getElementById('busca-form').addEventListener('submit', e => e.preventDefault());
 btnLimpar.addEventListener('click', limparBusca);
-document.getElementById('grade').addEventListener('click', e => { if (e.target.closest('[data-limpar]')) limparBusca(); });
+document.getElementById('grade').addEventListener('click', e => {
+  if (e.target.closest('[data-reset-filtros]')) resetarTudo();
+});
 
 /* ===== Carrinho ===== */
 function chave(p) { return p.nome + ' | ' + p.tamanho; }
@@ -806,10 +870,9 @@ const PROD = Object.fromEntries(PRODUTOS.map(p => [chave(p), p]));
 const ler = (k, padrao) => { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? padrao; } catch { return padrao; } };
 const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
 
-let carrinho = ler('carrinho', {});              // { chave: quantidade }
+let carrinho = ler('carrinho', {});
 for (const k in carrinho) if (!PROD[k] || !(carrinho[k] > 0)) delete carrinho[k];
 
-// "R$ 1.299,90" -> 1299.9 ; "[R$ —]" -> null (preço a confirmar)
 function valor(preco) {
   const m = String(preco).replace(/\./g, '').match(/(\d+)(?:,(\d{1,2}))?/);
   return m ? Number(m[1] + '.' + (m[2] || '0')) : null;
@@ -871,7 +934,6 @@ function mudar(k, delta) {
   renderCarrinho();
 }
 
-// Botão "Adicionar ao carrinho" nos cards
 document.getElementById('grade').addEventListener('click', e => {
   const b = e.target.closest('[data-add]'); if (!b) return;
   mudar(b.dataset.add, 1);
@@ -880,7 +942,6 @@ document.getElementById('grade').addEventListener('click', e => {
   b._t = setTimeout(() => { b.innerHTML = ICONE_CARRINHO + ' Comprar'; b.classList.remove('ok'); }, 1400);
 });
 
-// Detalhes do produto
 const det = document.getElementById('detalhe');
 document.getElementById('grade').addEventListener('click', e => {
   const b = e.target.closest('[data-det]'); if (!b) return;
@@ -909,13 +970,11 @@ el('det-comprar').addEventListener('click', e => { mudar(e.currentTarget.dataset
 el('det-fechar').addEventListener('click', () => det.close());
 det.addEventListener('click', e => { if (e.target === det) det.close(); });
 
-// Abrir / fechar
 el('abrir-carrinho').addEventListener('click', () => { dlg.showModal(); });
 el('fechar-carrinho').addEventListener('click', () => dlg.close());
 el('car-ver').addEventListener('click', () => dlg.close());
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 
-// Quantidades
 el('car-lista').addEventListener('click', e => {
   const t = e.target.closest('button'); if (!t) return;
   if (t.dataset.mais) mudar(t.dataset.mais, 1);
@@ -927,7 +986,6 @@ el('car-limpar').addEventListener('click', () => {
   carrinho = {}; el('car-aviso').hidden = true; renderCarrinho();
 });
 
-// Dados de entrega: lembrados neste navegador
 const CAMPOS = ['nome','cep','rua','numero','complemento','bairro','cidade','uf','pagamento','obs'];
 const salvo = ler('entrega', {});
 CAMPOS.forEach(n => { if (salvo[n]) form.elements[n].value = salvo[n]; });
@@ -936,7 +994,6 @@ form.addEventListener('input', e => {
   gravar('entrega', Object.fromEntries(CAMPOS.map(n => [n, form.elements[n].value])));
 });
 
-// CEP: máscara + preenchimento automático do endereço (ViaCEP)
 const cepInput = form.elements.cep;
 cepInput.addEventListener('input', async () => {
   const d = cepInput.value.replace(/\D/g, '').slice(0, 8);
@@ -962,7 +1019,6 @@ cepInput.addEventListener('input', async () => {
 });
 form.elements.uf.addEventListener('input', e => { e.target.value = e.target.value.toUpperCase(); });
 
-// Finalizar: valida e abre o WhatsApp com o pedido completo
 form.addEventListener('submit', e => {
   e.preventDefault();
   const erro = el('car-erro');
@@ -1014,7 +1070,6 @@ form.addEventListener('submit', e => {
   el('car-aviso').hidden = false;
 });
 
-
 /* Menu mobile */
 (function(){
   const btn = document.getElementById('btn-menu');
@@ -1040,6 +1095,7 @@ form.addEventListener('submit', e => {
   menu.querySelectorAll('[data-fecha-menu]').forEach(a => a.addEventListener('click', fechar));
 })();
 
+renderFiltros();
 renderCarrinho();
 renderProdutos();
 </script>
