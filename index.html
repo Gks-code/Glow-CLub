@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Medicamentos | GLOW CLUB</title>
-<meta name="description" content="Medicamentos com procedência, direto na sua porta. Escolha o produto e receba confirmação completa por WhatsApp antes de pagar.">
+<title>GLOW CLUB | Início</title>
+<meta name="description" content="GLOW CLUB — escolha entre atendimento para varejo ou revenda.">
 <meta name="theme-color" content="#E9EDEE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
 <style>
+
 :root{
   --bg:#E9EDEE; --bg-2:#F3F6F6; --card:#FFFFFF; --panel:#F6F8F8;
   --ink:#16222B; --ink-2:#3A4851; --muted:#55626B; --line:#CBD3D6; --line-2:#B4BEC3;
@@ -368,25 +369,23 @@ footer .nav a:first-child{color:var(--on-ink)}
   .topbar-inner .logo img{height:40px !important;max-width:120px}
 }
 
+
+/* Ajustes da página inicial sem catálogo/carrinho */
+.topo-acoes{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-desktop{display:flex}
+@media(max-width:900px){.nav-desktop{display:none}.btn-menu{display:inline-flex}.logo img{height:48px;margin:-2px 0 -6px -6px}.topbar-inner{padding-block:10px;gap:8px}.btn-wa{padding:0 12px;min-height:44px}.btn-wa .wa-txt{font-size:14px}}
+@media(max-width:400px){.btn-wa .wa-txt{display:none}.btn-wa{padding:0 10px;width:44px;justify-content:center}}
 </style>
 </head>
 <body>
-
 <header class="topbar">
   <div class="wrap topbar-inner">
-    <a class="logo" href="#inicio"><img src="glowclub-logo.svg" alt="Glow Club" width="156" height="64"></a>
-
+    <a class="logo" href="index.html" aria-label="GLOW CLUB — início"><img src="glowclub-logo.svg" alt="Glow Club" width="156" height="64"></a>
     <nav class="nav nav-desktop" aria-label="Principal">
       <a href="varejo.html">Varejo</a>
       <a class="sub" href="atacado.html">Revendedor</a>
     </nav>
-
     <div class="topo-acoes">
-      <button type="button" class="btn-carrinho" id="abrir-carrinho" aria-haspopup="dialog" aria-label="Carrinho">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12.2a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.5L22 7H6"/></svg>
-        <span class="txt">Carrinho</span>
-        <span class="badge" id="badge" aria-label="itens no carrinho">0</span>
-      </button>
       <a class="btn btn-sm btn-ink btn-wa" data-wa href="#">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
         <span class="wa-txt">WhatsApp</span>
@@ -397,70 +396,11 @@ footer .nav a:first-child{color:var(--on-ink)}
       </button>
     </div>
   </div>
-
-  <div class="menu-mobile" id="menu-mobile" hidden>
-    <a href="#produtos" data-fecha-menu>Varejo</a>
+  <nav class="menu-mobile" id="menu-mobile" aria-label="Menu mobile" hidden>
+    <a href="varejo.html" data-fecha-menu>Varejo</a>
     <a href="atacado.html" data-fecha-menu>Revendedor</a>
-    <a href="#duvidas" data-fecha-menu>Dúvidas</a>
-  </div>
+  </nav>
 </header>
-
-<dialog class="carrinho" id="carrinho" aria-labelledby="car-titulo">
-  <form class="car-box" id="car-form" novalidate>
-    <div class="car-topo">
-      <h2 class="cond" id="car-titulo">Seu carrinho</h2>
-      <button type="button" class="car-fechar" id="fechar-carrinho" aria-label="Fechar carrinho">×</button>
-    </div>
-    <div class="car-corpo">
-      <ul class="car-lista" id="car-lista"></ul>
-      <p class="car-vazio" id="car-vazio">Seu carrinho está vazio. <a href="#produtos" id="car-ver">Ver produtos</a></p>
-      <div class="car-total" id="car-total"><span>Subtotal</span><b id="car-subtotal">—</b></div>
-
-      <div class="car-form" id="car-dados">
-        <h3>Dados de entrega</h3>
-        <div class="campos">
-          <label class="campo">Nome completo<input name="nome" autocomplete="name" required></label>
-          <label class="campo c2">CEP<input name="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" required><small id="cep-status"></small></label>
-          <label class="campo c4">Rua / Avenida<input name="rua" autocomplete="address-line1" required></label>
-          <label class="campo c2">Número<input name="numero" inputmode="numeric" required></label>
-          <label class="campo c4">Complemento<input name="complemento" placeholder="Apto, bloco, referência"></label>
-          <label class="campo">Bairro<input name="bairro" required></label>
-          <label class="campo c4">Cidade<input name="cidade" autocomplete="address-level2" required></label>
-          <label class="campo c2">UF<input name="uf" maxlength="2" autocomplete="address-level1" required></label>
-          <label class="campo">Forma de pagamento
-            <select name="pagamento" required>
-              <option value="">Escolha…</option>
-              <option>PIX</option>
-              <option>Cartão de crédito</option>
-              <option>Cartão de débito</option>
-            </select>
-          </label>
-          <label class="campo">Observações<textarea name="obs" placeholder="Opcional"></textarea></label>
-        </div>
-      </div>
-    </div>
-    <div class="car-pe" id="car-pe">
-      <p class="car-erro" id="car-erro" role="alert" hidden></p>
-      <p class="car-aviso" id="car-aviso" hidden>Abrimos o WhatsApp com o seu pedido. Depois de enviar a mensagem, <button type="button" id="car-limpar">esvazie o carrinho</button>.</p>
-      <button type="submit" class="btn btn-accent">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-5.1A8.5 8.5 0 1 1 21 11.5z"/></svg>
-        Finalizar pedido pelo WhatsApp
-      </button>
-    </div>
-  </form>
-</dialog>
-
-<dialog class="detalhe" id="detalhe" aria-labelledby="det-nome">
-  <button type="button" class="det-fechar" id="det-fechar" aria-label="Fechar">×</button>
-  <div class="det-foto" id="det-foto"></div>
-  <div class="det-corpo">
-    <div class="card-linha"><span class="card-origem" id="det-origem"></span><span class="card-tam" id="det-tam"></span></div>
-    <h3 id="det-nome"></h3>
-    <p id="det-desc"></p>
-    <div class="card-preco" id="det-preco"></div>
-    <div class="card-botoes" style="grid-template-columns:1fr"><button type="button" class="b-comprar" id="det-comprar"></button></div>
-  </div>
-</dialog>
 
 <section class="marcas" aria-label="Marcas na loja">
   <span class="marcas-label">Marcas na loja</span>
@@ -470,11 +410,11 @@ footer .nav a:first-child{color:var(--on-ink)}
 <main id="inicio">
   <section class="wrap hero">
     <div class="hero-main">
-      <h1 class="cond">Medicamentos com procedência, direto na sua porta.</h1>
-      <p>Escolha o produto e receba a confirmação completa por WhatsApp antes de pagar: tamanho, valor e frete.</p>
+      <h1 class="cond">GLOW CLUB.</h1>
+      <p>Encontre o caminho ideal para você. Acesse nossa página de varejo ou conheça as condições para revendedores.</p>
       <div class="actions">
-        <a class="btn btn-accent" href="#produtos">Ver produtos</a>
-        <a class="btn btn-line" data-wa href="#">Tirar uma dúvida</a>
+        <a class="btn btn-accent" href="varejo.html">Conhecer o varejo</a>
+        <a class="btn btn-line" href="atacado.html">Quero revender</a>
       </div>
     </div>
   </section>
@@ -484,23 +424,17 @@ footer .nav a:first-child{color:var(--on-ink)}
       <div class="dual-path-main">
         <p class="eyebrow">GLOW CLUB</p>
         <h2 class="cond">Para você.<br><span class="accent">Para sua revenda.</span></h2>
-        <p>Atendimento direto pelo WhatsApp, com caminhos separados para varejo e revendedores. Escolha como começar.</p>
+        <p>Atendimento direto, com páginas separadas para quem compra no varejo e para quem deseja revender. Escolha como começar.</p>
         <div class="dual-actions">
-          <a class="dual-btn dual-btn-primary" href="#produtos">
-            <span>Varejo</span>
-            <strong>Para mim</strong>
-          </a>
-          <a class="dual-btn dual-btn-secondary" id="btn-revenda" href="#">
-            <span>Revenda</span>
-            <strong>Sou revendedor</strong>
-          </a>
+          <a class="dual-btn dual-btn-primary" href="varejo.html"><span>Varejo</span><strong>Para mim</strong></a>
+          <a class="dual-btn dual-btn-secondary" href="atacado.html"><span>Revenda</span><strong>Sou revendedor</strong></a>
         </div>
       </div>
     </div>
   </section>
+</main>
 
 <script>
-/* ===== CONFIGURE AQUI ===== */
 const CONFIG = {
   whatsapp: '',            // só números, com DDI e DDD. Ex.: '5545999999999'
   marca: 'GLOW CLUB',
@@ -516,515 +450,62 @@ const CONFIG = {
     { nome: 'OXYGENKW', logo: 'brands/oxygenkw.svg' }
   ]
 };
-
-// Categorias: cor de fundo do card e cor do pote ilustrado (usado quando não há foto)
-const CATEGORIAS = [
-  { id: 'emagrecedores',  nome: 'Emagrecimento',  fundo: '#D7DEF7', pote: '#2747D8' },
-  { id: 'hormonios',  nome: 'Hormônios',   fundo: '#F5DED3', pote: '#C2410C' },
-  { id: 'peptideos',  nome: 'Peptídeos', fundo: '#D6ECE4', pote: '#0E7C66' }
-];
-
-// Produtos: troque pelos seus. PREÇOS ABAIXO SÃO SÓ EXEMPLO.
-// origem: texto azul do card (ex.: 'Nacional', 'Importado') · destaque: true mostra o selo
-// descricao: aparece ao clicar em "Detalhes" · foto: opcional (ex.: 'img/produto.png')
-// Load product data and map to site format
-const PRODUCTS_DATA = [
-  {id:`em-tg`,slug:`tg-nacional-60mg-15mg-x-4-frascos`,name:`TG`,presentation:`60mg (15mg x 4 frascos)`,shortDescription:`Nacional · 60mg (15mg x 4 frascos)`,categorySlug:`emagrecedores`,brand:`Nacional`,price:849,compareAtPrice:979,imageUrl:`imgs/01dc2a61-77ff-4c5b-63c6-d25ded4aa900_public.jpg`,featured:true,onSale:true,sortOrder:0},
-  {id:`em-tirzec`,slug:`tirzec-nacional-60mg-15mg-x-4-frascos`,name:`Tirzec`,presentation:`60mg (15mg x 4 frascos)`,shortDescription:`Nacional · 60mg (15mg x 4 frascos)`,categorySlug:`emagrecedores`,brand:`Nacional`,price:799,compareAtPrice:null,imageUrl:`imgs/c7539696-7f87-41bc-669b-4d0dd4df5800_card.jpg`,featured:true,onSale:false,sortOrder:1},
-  {id:`em-tirzena`,slug:`tirzena-nacional-60mg-15mg-x-4-frascos`,name:`Tirzena`,presentation:`60mg (15mg x 4 frascos)`,shortDescription:`Nacional · 60mg (15mg x 4 frascos)`,categorySlug:`emagrecedores`,brand:`Nacional`,price:799,compareAtPrice:null,imageUrl:`imgs/849fc756-5e99-4de7-d634-b65e19ea6f00_product.jpg`,featured:true,onSale:false,sortOrder:2},
-  {id:`em-lipoles`,slug:`lipoles-nacional-60mg`,name:`Lipoles`,presentation:`60mg`,shortDescription:`Nacional · 60mg`,categorySlug:`emagrecedores`,brand:`Nacional`,price:799,compareAtPrice:null,imageUrl:`imgs/7ea77efa-7c8f-4b48-8f9a-d89e0986b000_card.jpg`,featured:true,onSale:false,sortOrder:3},
-  {id:`em-tirze-biovant`,slug:`tirzepatida-biovant-60mg`,name:`Tirzepatida`,presentation:`60mg`,shortDescription:`Biovant · 60mg`,categorySlug:`emagrecedores`,brand:`Biovant`,isSoldOut:true,price:940,compareAtPrice:null,imageUrl:`imgs/0a8b54ae-8b66-49d8-a0d0-d27eed620200_public.jpg`,featured:true,onSale:false,sortOrder:4},
-  {id:`em-tirze-peptigen`,slug:`tirzepatida-peptigen-60mg`,name:`Tirzepatida`,presentation:`60mg`,shortDescription:`Peptigen · 60mg`,categorySlug:`emagrecedores`,brand:`Peptigen`,price:1120,compareAtPrice:null,imageUrl:`imgs/7d0f08f0-a006-432a-8ca7-854b7379d500_public.jpg`,featured:true,onSale:false,sortOrder:5},
-  {id:`em-reta-biovant`,slug:`retatrutide-biovant-40mg`,name:`Retatrutide`,presentation:`40mg`,shortDescription:`Biovant · 40mg`,categorySlug:`emagrecedores`,brand:`Biovant`,isSoldOut:true,price:1630,compareAtPrice:null,imageUrl:`imgs/d769ccb8-fe6a-4b98-2ec4-e2f3a6a4cd00_public.jpg`,featured:true,onSale:false,sortOrder:6},
-  {id:`em-cagri-biovant`,slug:`cagrilintide-biovant-5mg`,name:`Cagrilintide`,presentation:`5mg`,shortDescription:`Biovant · 5mg`,categorySlug:`emagrecedores`,brand:`Biovant`,isSoldOut:true,price:620,compareAtPrice:null,imageUrl:`imgs/b9ee89a8-acf2-438e-1088-edc636540300_public.jpg`,featured:true,onSale:false,sortOrder:7},
-  {id:`em-reta-peptigen`,slug:`retatrutide-peptigen-40mg`,name:`Retatrutide`,presentation:`40mg`,shortDescription:`Peptigen · 40mg`,categorySlug:`emagrecedores`,brand:`Peptigen`,price:1780,compareAtPrice:null,imageUrl:`imgs/5ec1cae9-4de3-44f2-d62d-a5a388960200_public.jpg`,featured:true,onSale:false,sortOrder:8},
-  {id:`em-cagri-peptigen`,slug:`cagrilintide-peptigen-5mg`,name:`Cagrilintide`,presentation:`5mg`,shortDescription:`Peptigen · 5mg`,categorySlug:`emagrecedores`,brand:`Peptigen`,price:790,compareAtPrice:null,imageUrl:`imgs/675da475-b19e-4d0d-47a5-a0204f1cfc00_public.jpg`,featured:true,onSale:false,sortOrder:9},
-  {id:`co-cipio`,slug:`cipionato-de-testosterona-cooper-pharma-250mg-10ml`,name:`Cipionato de Testosterona`,presentation:`250mg / 10ml`,shortDescription:`Cooper Pharma · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:353,compareAtPrice:null,imageUrl:`imgs/38cb7be6-1320-4a59-0dc4-516422a2ed00_public.jpg`,featured:true,onSale:false,sortOrder:10},
-  {id:`co-deca`,slug:`decanoato-de-nandrolona-cooper-pharma-250mg-10ml`,name:`Decanoato de Nandrolona`,presentation:`250mg / 10ml`,shortDescription:`Cooper Pharma · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:426,compareAtPrice:null,imageUrl:`imgs/38cb7be6-1320-4a59-0dc4-516422a2ed00_public.jpg`,featured:true,onSale:false,sortOrder:11},
-  {id:`co-durat`,slug:`durateston-testosterona-cooper-pharma-250mg-10ml`,name:`Durateston Testosterona`,presentation:`250mg / 10ml`,shortDescription:`Cooper Pharma · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:402,compareAtPrice:null,imageUrl:`imgs/a69560d2-0599-4d87-0e85-97e586852800_public.jpg`,featured:false,onSale:false,sortOrder:12},
-  {id:`co-tremac`,slug:`trembolona-acetato-cooper-pharma-100mg-10ml`,name:`Trembolona Acetato`,presentation:`100mg / 10ml`,shortDescription:`Cooper Pharma · 100mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:560,compareAtPrice:null,imageUrl:`imgs/ed4510f2-4ea7-4317-ddc8-905539feef00_banner.jpg`,featured:false,onSale:false,sortOrder:13},
-  {id:`co-prop`,slug:`propionato-de-testosterona-cooper-pharma-100mg-10ml`,name:`Propionato de Testosterona`,presentation:`100mg / 10ml`,shortDescription:`Cooper Pharma · 100mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:340,compareAtPrice:null,imageUrl:`imgs/92dcd3e1-0f68-4167-4743-bc4c64f7ad00_public.jpg`,featured:false,onSale:false,sortOrder:14},
-  {id:`co-npp`,slug:`npp-cooper-nandrolona-fenilpropionato-cooper-pharma-100mg-10ml`,name:`NPP Cooper (Nandrolona Fenilpropionato)`,presentation:`100mg / 10ml`,shortDescription:`Cooper Pharma · 100mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:463,compareAtPrice:null,imageUrl:`imgs/f94aef9a-55c6-4f52-6bd8-02cd37d24500_banner.jpg`,featured:false,onSale:false,sortOrder:15},
-  {id:`co-suso`,slug:`susobolic-testo-mix-suspension-cooper-pharma-250mg-10ml`,name:`Susobolic (Testo Mix Suspension)`,presentation:`250mg / 10ml`,shortDescription:`Cooper Pharma · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:390,compareAtPrice:null,imageUrl:`imgs/a69560d2-0599-4d87-0e85-97e586852800_public.jpg`,featured:false,onSale:false,sortOrder:16},
-  {id:`co-hemo`,slug:`hemogenin-cooper-pharma-50mg-50-capsulas`,name:`Hemogenin`,presentation:`50mg · 50 cápsulas`,shortDescription:`Cooper Pharma · 50mg · 50 cápsulas`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:390,compareAtPrice:null,imageUrl:`imgs/9be10308-59a3-4f51-7655-8c37e6556900_product.jpg`,featured:false,onSale:false,sortOrder:17},
-  {id:`co-diana`,slug:`dianabol-cooper-pharma-10mg-50-capsulas`,name:`Dianabol`,presentation:`10mg · 50 cápsulas`,shortDescription:`Cooper Pharma · 10mg · 50 cápsulas`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:230,compareAtPrice:null,imageUrl:`imgs/b788f6a7-02da-4f4f-4b13-3919f969a100_banner.jpg`,featured:false,onSale:false,sortOrder:18},
-  {id:`co-stano`,slug:`stanozolol-oral-cooper-pharma-10mg-50-capsulas`,name:`Stanozolol Oral`,presentation:`10mg · 50 cápsulas`,shortDescription:`Cooper Pharma · 10mg · 50 cápsulas`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:230,compareAtPrice:null,imageUrl:`imgs/2f6b4bf0-44a1-4110-f124-4bdb74571800_product.jpg`,featured:false,onSale:false,sortOrder:19},
-  {id:`co-clemb`,slug:`clembuterol-cooper-pharma-40mcg-50-capsulas`,name:`Clembuterol`,presentation:`40mcg · 50 cápsulas`,shortDescription:`Cooper Pharma · 40mcg · 50 cápsulas`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:230,compareAtPrice:null,imageUrl:`imgs/b054c91f-57ac-405f-06dd-a66f154e8900_banner.jpg`,featured:false,onSale:false,sortOrder:20},
-  {id:`co-turbo`,slug:`turbolic-turinabol-cooper-pharma-10mg-50-capsulas`,name:`Turbolic (Turinabol)`,presentation:`10mg · 50 cápsulas`,shortDescription:`Cooper Pharma · 10mg · 50 cápsulas`,categorySlug:`hormonios`,brand:`Cooper Pharma`,price:402,compareAtPrice:null,imageUrl:`imgs/ed287f9e-14c7-4057-f747-43a9a5e95900_thumb.jpg`,featured:false,onSale:false,sortOrder:21},
-  {id:`la-trem-e`,slug:`trembolona-enantato-landerlan-gold-200mg-10ml`,name:`Trembolona Enantato`,presentation:`200mg / 10ml`,shortDescription:`Landerlan Gold · 200mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:230,compareAtPrice:null,imageUrl:`imgs/7554d409-4f88-4c83-0f4f-934edc6aa600_thumbnail.jpg`,featured:false,onSale:false,sortOrder:22},
-  {id:`la-trem-a`,slug:`trembolona-acetato-landerlan-gold-100mg-10ml`,name:`Trembolona Acetato`,presentation:`100mg / 10ml`,shortDescription:`Landerlan Gold · 100mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:230,compareAtPrice:null,imageUrl:`imgs/3ae4b53a-b847-4b39-9ec3-198330283f00_thumb.jpg`,featured:false,onSale:false,sortOrder:23},
-  {id:`la-testo-c`,slug:`testoland-depot-cipionato-de-testosterona-landerlan-gold-200mg-10ml`,name:`Testoland Depot (Cipionato de Testosterona)`,presentation:`200mg / 10ml`,shortDescription:`Landerlan Gold · 200mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:199,compareAtPrice:null,imageUrl:`imgs/c338ad7e-ecc9-43bc-3b58-8821868ea500_product.jpg`,featured:false,onSale:false,sortOrder:24},
-  {id:`la-testo-p`,slug:`testosterona-propionato-landerlan-gold-100mg-10ml`,name:`Testosterona Propionato`,presentation:`100mg / 10ml`,shortDescription:`Landerlan Gold · 100mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:199,compareAtPrice:null,imageUrl:`imgs/54a52e5b-7510-44f6-9e46-a46a2b8c4100_card.jpg`,featured:false,onSale:false,sortOrder:25},
-  {id:`la-testo-e`,slug:`testenat-testosterona-enantato-landerlan-gold-250mg-10ml`,name:`Testenat (Testosterona Enantato)`,presentation:`250mg / 10ml`,shortDescription:`Landerlan Gold · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:199,compareAtPrice:null,imageUrl:`imgs/c6c311ea-783c-493d-2b77-43d05cff8d00_product.jpg`,featured:false,onSale:false,sortOrder:26},
-  {id:`la-durat`,slug:`durateston-plus-landerlan-gold-250mg-10ml`,name:`Durateston Plus`,presentation:`250mg / 10ml`,shortDescription:`Landerlan Gold · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:220,compareAtPrice:null,imageUrl:`imgs/081cafa4-616b-4358-222b-1404d09acb00_thumb.jpg`,featured:false,onSale:false,sortOrder:27},
-  {id:`la-deca`,slug:`decaland-nandrolona-decanoato-landerlan-gold-200mg-10ml`,name:`Decaland (Nandrolona Decanoato)`,presentation:`200mg / 10ml`,shortDescription:`Landerlan Gold · 200mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:199,compareAtPrice:null,imageUrl:`imgs/6ceeb59d-482e-45e2-c7d2-a2007756c600_thumbnail.jpg`,featured:false,onSale:false,sortOrder:28},
-  {id:`la-bold`,slug:`boldenona-landerlan-gold-250mg-10ml`,name:`Boldenona`,presentation:`250mg / 10ml`,shortDescription:`Landerlan Gold · 250mg / 10ml`,categorySlug:`hormonios`,brand:`Landerlan Gold`,price:199,compareAtPrice:null,imageUrl:`imgs/15bf498d-0067-40a5-b8e0-eb8c6f105800_card.jpg`,featured:false,onSale:false,sortOrder:29},
-  {id:`zp-tres-e`,slug:`trestolone-enantato-zphc-100mg-10ml`,name:`Trestolone Enantato`,presentation:`100mg / 10ml`,shortDescription:`ZPHC · 100mg / 10ml`,categorySlug:`hormonios`,brand:`ZPHC`,price:877,compareAtPrice:null,imageUrl:`imgs/eba9006a-f209-4894-3ffd-1aa39e6b6200_banner.jpg`,featured:false,onSale:false,sortOrder:30},
-  {id:`zp-tres-a`,slug:`trestolone-acetato-zphc-50mg-10ml`,name:`Trestolone Acetato`,presentation:`50mg / 10ml`,shortDescription:`ZPHC · 50mg / 10ml`,categorySlug:`hormonios`,brand:`ZPHC`,price:609,compareAtPrice:null,imageUrl:`imgs/01cb9d5c-a0a5-4e68-e82d-1cb77a70b000_card.jpg`,featured:false,onSale:false,sortOrder:31},
-  {id:`ox-mast`,slug:`masteron-oxygenkw-100mg`,name:`Masteron`,presentation:`100mg`,shortDescription:`OXYGENKW · 100mg`,categorySlug:`hormonios`,brand:`OXYGENKW`,price:548,compareAtPrice:null,imageUrl:`imgs/de8d00a0-f585-487e-3120-d84dcd876500_public.jpg`,featured:false,onSale:false,sortOrder:32},
-  {id:`pe-5amino`,slug:`5-amino-1mq-biovant-10mg`,name:`5 AMINO 1MQ`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:579,compareAtPrice:null,imageUrl:`imgs/a1df3e5f-0e5c-400d-8818-1596fc418900_public.jpg`,featured:false,onSale:false,sortOrder:33},
-  {id:`pe-adipo`,slug:`adipotide-biovant-10mg`,name:`ADIPOTIDE`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:889,compareAtPrice:null,imageUrl:`imgs/d8865531-a502-4c94-779e-755a2f92d000_public.jpg`,featured:false,onSale:false,sortOrder:34},
-  {id:`pe-aod`,slug:`aod-9604-biovant-10mg`,name:`AOD-9604`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:679,compareAtPrice:null,imageUrl:`imgs/5da4e786-aea0-495b-2f76-d6da1b8cf700_public.jpg`,featured:false,onSale:false,sortOrder:35},
-  {id:`pe-bpc`,slug:`bpc-157-biovant-10mg`,name:`BPC-157`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:579,compareAtPrice:null,imageUrl:`imgs/f9eb6991-9464-4b72-b0c0-e83a0f964500_public.jpg`,featured:false,onSale:false,sortOrder:36},
-  {id:`pe-cagri`,slug:`cagrilintide-biovant-5mg-2`,name:`Cagrilintide`,presentation:`5mg`,shortDescription:`Biovant · 5mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:620,compareAtPrice:null,imageUrl:`imgs/b9ee89a8-acf2-438e-1088-edc636540300_public.jpg`,featured:false,onSale:false,sortOrder:37},
-  {id:`pe-cagri-sema`,slug:`cagrilintide-semaglutide-biovant-5mg-5mg`,name:`Cagrilintide + Semaglutide`,presentation:`5mg / 5mg`,shortDescription:`Biovant · 5mg / 5mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:620,compareAtPrice:null,imageUrl:`imgs/f18de7a6-e819-4c00-dddf-9eee22b55500_public.jpg`,featured:false,onSale:false,sortOrder:38},
-  {id:`pe-cbl`,slug:`cbl-514-biovant-5mg`,name:`CBL-514`,presentation:`5mg`,shortDescription:`Biovant · 5mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:699,compareAtPrice:null,imageUrl:`imgs/98824845-9bd0-45d5-4e5b-e959fdc29000_public.jpg`,featured:false,onSale:false,sortOrder:39},
-  {id:`pe-cjc`,slug:`cjc-1295-no-dac-biovant-10mg`,name:`CJC-1295 No DAC`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:619,compareAtPrice:null,imageUrl:`imgs/d8c1db95-6746-44c6-7748-633a1ceaeb00_public.jpg`,featured:false,onSale:false,sortOrder:40},
-  {id:`pe-cjc-ipa`,slug:`cjc-ipamorelin-biovant-10mg`,name:`CJC + Ipamorelin`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:619,compareAtPrice:null,imageUrl:`imgs/3fa87f9f-acc3-464c-d61e-65ee20924700_public.jpg`,featured:false,onSale:false,sortOrder:41},
-  {id:`pe-dsip`,slug:`dsip-biovant-15mg`,name:`DSIP`,presentation:`15mg`,shortDescription:`Biovant · 15mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/6ef7ca9c-b993-4d2b-0729-cf7df2196400_public.jpg`,featured:false,onSale:false,sortOrder:42},
-  {id:`pe-epit`,slug:`epithalon-biovant-10mg`,name:`Epithalon`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/ed989a36-a473-4113-1831-c57ffec5c700_public.jpg`,featured:false,onSale:false,sortOrder:43},
-  {id:`pe-ghk50`,slug:`ghk-cu-biovant-50mg`,name:`GHK-Cu`,presentation:`50mg`,shortDescription:`Biovant · 50mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:580,compareAtPrice:null,imageUrl:`imgs/4770314b-ff5d-4c83-37d7-4888a0df0e00_public.jpg`,featured:false,onSale:false,sortOrder:44},
-  {id:`pe-ghk100`,slug:`ghk-cu-biovant-100mg`,name:`GHK-Cu`,presentation:`100mg`,shortDescription:`Biovant · 100mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:819,compareAtPrice:null,imageUrl:`imgs/4770314b-ff5d-4c83-37d7-4888a0df0e00_public.jpg`,featured:false,onSale:false,sortOrder:45},
-  {id:`pe-ghrp2`,slug:`ghrp-2-biovant-15mg`,name:`GHRP-2`,presentation:`15mg`,shortDescription:`Biovant · 15mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/3c5b2853-2bc6-4989-dce3-acd64fa99d00_public.jpg`,featured:false,onSale:false,sortOrder:46},
-  {id:`pe-ghrp6`,slug:`ghrp-6-biovant-10mg`,name:`GHRP-6`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/e18e8757-7a1d-4458-cbad-8d195ef77500_public.jpg`,featured:false,onSale:false,sortOrder:47},
-  {id:`pe-glow`,slug:`glow-biovant-70mg`,name:`Glow`,presentation:`70mg`,shortDescription:`Biovant · 70mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:980,compareAtPrice:null,imageUrl:`imgs/d2850cb6-7071-45be-d534-c9dc45333b00_public.jpg`,featured:false,onSale:false,sortOrder:48},
-  {id:`pe-hexa`,slug:`hexarelin-biovant-10mg`,name:`Hexarelin`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:699,compareAtPrice:null,imageUrl:`imgs/45ec8e9d-9c74-4996-a24a-72791351c300_public.jpg`,featured:false,onSale:false,sortOrder:49},
-  {id:`pe-hgh`,slug:`hgh-191aa-biovant-24ui`,name:`HGH 191AA`,presentation:`24UI`,shortDescription:`Biovant · 24UI`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:584,compareAtPrice:null,imageUrl:`imgs/670a44dc-38fd-47ec-f606-7a1f43dc6700_public.jpg`,featured:false,onSale:false,sortOrder:50},
-  {id:`pe-hghfrag`,slug:`hgh-frag-biovant-5mg`,name:`HGH Frag`,presentation:`5mg`,shortDescription:`Biovant · 5mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/5f39dff3-5e3f-476a-c6f7-bafa96162700_public.jpg`,featured:false,onSale:false,sortOrder:51},
-  {id:`pe-igf1`,slug:`igf1-lr3-biovant-1mg`,name:`IGF1-LR3`,presentation:`1mg`,shortDescription:`Biovant · 1mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:720,compareAtPrice:null,imageUrl:`imgs/e18af6a2-3223-433f-19f2-9092447d9900_public.jpg`,featured:false,onSale:false,sortOrder:52},
-  {id:`pe-ipa`,slug:`ipamorelin-biovant-10mg`,name:`Ipamorelin`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:579,compareAtPrice:null,imageUrl:`imgs/8f709e6d-8a11-4b17-fdaf-4abb39ca9c00_public.jpg`,featured:false,onSale:false,sortOrder:53},
-  {id:`pe-klow`,slug:`klow-biovant-80mg`,name:`Klow`,presentation:`80mg`,shortDescription:`Biovant · 80mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:1130,compareAtPrice:null,imageUrl:`imgs/c6f93dbf-7b6a-4fee-d4b9-8aa5e1e81a00_public.jpg`,featured:false,onSale:false,sortOrder:54},
-  {id:`pe-kpv`,slug:`kpv-biovant-10mg`,name:`KPV`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/6ff7451b-f0aa-4c0f-14e7-35b24ce42000_public.jpg`,featured:false,onSale:false,sortOrder:55},
-  {id:`pe-mela`,slug:`melanotan-2-biovant-10mg`,name:`Melanotan-2`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/04f40913-2c20-4c54-2567-f176901bd200_public.jpg`,featured:false,onSale:false,sortOrder:56},
-  {id:`pe-mots`,slug:`mots-c-biovant-10mg`,name:`MOTS-C`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:579,compareAtPrice:null,imageUrl:`imgs/74b1a4b8-b668-4d90-e51b-6a6a2c4bb800_public.jpg`,featured:false,onSale:false,sortOrder:57},
-  {id:`pe-nad`,slug:`nad-biovant-1000mg`,name:`NAD+`,presentation:`1000mg`,shortDescription:`Biovant · 1000mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:580,compareAtPrice:null,imageUrl:`imgs/62434086-82eb-4595-f9b8-90d6f9725100_public.jpg`,featured:false,onSale:false,sortOrder:58},
-  {id:`pe-oxy`,slug:`oxytocin-biovant-10mg`,name:`Oxytocin`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/9404c2fd-1d7d-4822-7362-d848d9f29700_public.jpg`,featured:false,onSale:false,sortOrder:59},
-  {id:`pe-pe22`,slug:`pe-22-28-biovant-10mg`,name:`PE-22-28`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/f1bddbc5-57ab-451c-ae55-93257d0c6f00_public.jpg`,featured:false,onSale:false,sortOrder:60},
-  {id:`pe-pineal`,slug:`pinealon-biovant-10mg`,name:`Pinealon`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/b175a004-37b7-465c-607e-f999103fce00_public.jpg`,featured:false,onSale:false,sortOrder:61},
-  {id:`pe-pt141`,slug:`pt-141-biovant-10mg`,name:`PT-141`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/3dcab9a3-91ed-4a81-c56f-dc085c1c1900_public.jpg`,featured:false,onSale:false,sortOrder:62},
-  {id:`pe-reta20`,slug:`retatrutide-biovant-20mg`,name:`Retatrutide`,presentation:`20mg`,shortDescription:`Biovant · 20mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:1230,compareAtPrice:null,imageUrl:`imgs/d769ccb8-fe6a-4b98-2ec4-e2f3a6a4cd00_public.jpg`,featured:false,onSale:false,sortOrder:63},
-  {id:`pe-reta40`,slug:`retatrutide-biovant-40mg-2`,name:`Retatrutide`,presentation:`40mg`,shortDescription:`Biovant · 40mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:1630,compareAtPrice:null,imageUrl:`imgs/d769ccb8-fe6a-4b98-2ec4-e2f3a6a4cd00_public.jpg`,featured:false,onSale:false,sortOrder:64},
-  {id:`pe-selank`,slug:`selank-biovant-15mg`,name:`Selank`,presentation:`15mg`,shortDescription:`Biovant · 15mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/ced5d798-2d9a-46fb-193d-025e23de8d00_public.jpg`,featured:false,onSale:false,sortOrder:65},
-  {id:`pe-semax`,slug:`semax-biovant-10mg`,name:`Semax`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/2b56a816-2d93-4731-9d22-123880188d00_public.jpg`,featured:false,onSale:false,sortOrder:66},
-  {id:`pe-slu`,slug:`slu-pp-332-biovant-5mg`,name:`SLU-PP-332`,presentation:`5mg`,shortDescription:`Biovant · 5mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:679,compareAtPrice:null,imageUrl:`imgs/f5ddc26f-cd96-40d4-43c9-a4f589625c00_public.jpg`,featured:false,onSale:false,sortOrder:67},
-  {id:`pe-ss31`,slug:`ss-31-biovant-10mg`,name:`SS-31`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:520,compareAtPrice:null,imageUrl:`imgs/02827287-1cb6-4074-e0d3-f484a6b7d300_public.jpg`,featured:false,onSale:false,sortOrder:68},
-  {id:`pe-tb500`,slug:`tb-500-biovant-10mg`,name:`TB-500`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:679,compareAtPrice:null,imageUrl:`imgs/66da730a-7ad3-4683-5de4-12564ffadc00_public.jpg`,featured:false,onSale:false,sortOrder:69},
-  {id:`pe-tb-bpc`,slug:`tb-500-bpc-157-biovant-10mg-10mg`,name:`TB-500 + BPC-157`,presentation:`10mg / 10mg`,shortDescription:`Biovant · 10mg / 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:690,compareAtPrice:null,imageUrl:`imgs/806533cd-c9c7-4d86-c0e5-a6a08eeabf00_public.jpg`,featured:false,onSale:false,sortOrder:70},
-  {id:`pe-tesa`,slug:`tesamorelin-biovant-10mg`,name:`Tesamorelin`,presentation:`10mg`,shortDescription:`Biovant · 10mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:690,compareAtPrice:null,imageUrl:`imgs/bc224783-8801-40f7-ffba-1aec008e1300_public.jpg`,featured:false,onSale:false,sortOrder:71},
-  {id:`pe-tirze`,slug:`tirzepatide-biovant-60mg`,name:`Tirzepatide`,presentation:`60mg`,shortDescription:`Biovant · 60mg`,categorySlug:`peptideos`,brand:`Biovant`,isSoldOut:true,price:939,compareAtPrice:null,imageUrl:`imgs/0a8b54ae-8b66-49d8-a0d0-d27eed620200_public.jpg`,featured:false,onSale:false,sortOrder:72},
-  {id:`pg-5amino`,slug:`5-amino-1mq-peptigen-10mg`,name:`5-Amino-1MQ`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:620,compareAtPrice:null,imageUrl:`imgs/a1df3e5f-0e5c-400d-8818-1596fc418900_public.jpg`,featured:false,onSale:false,sortOrder:73},
-  {id:`pg-aod`,slug:`aod-9604-peptigen-10mg`,name:`AOD-9604`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:889,compareAtPrice:null,imageUrl:`imgs/089ab01a-6e17-4c6f-7c0b-d1190c9ba400_public.jpg`,featured:false,onSale:false,sortOrder:74},
-  {id:`pg-ara290`,slug:`ara-290-peptigen-10mg`,name:`ARA-290`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/6f9b5aba-1644-4e4c-66cb-9ea03571dc00_public.jpg`,featured:false,onSale:false,sortOrder:75},
-  {id:`pg-bpc`,slug:`bpc-157-peptigen-10mg`,name:`BPC-157`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/84f167ad-0048-4a4d-8130-6549db810a00_public.jpg`,featured:false,onSale:false,sortOrder:76},
-  {id:`pg-cagri`,slug:`cagrilintide-peptigen-5mg-2`,name:`Cagrilintide`,presentation:`5mg`,shortDescription:`Peptigen · 5mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:689,compareAtPrice:null,imageUrl:`imgs/675da475-b19e-4d0d-47a5-a0204f1cfc00_public.jpg`,featured:false,onSale:false,sortOrder:77},
-  {id:`pg-cbl`,slug:`cbl-514-peptigen-20mg`,name:`CBL-514`,presentation:`20mg`,shortDescription:`Peptigen · 20mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1230,compareAtPrice:null,imageUrl:`imgs/b27062c6-7d21-47ff-2784-89b6f41c0b00_public.jpg`,featured:false,onSale:false,sortOrder:78},
-  {id:`pg-cjc`,slug:`cjc-1295-no-dac-peptigen-10mg`,name:`CJC-1295 No DAC`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/6f9b5aba-1644-4e4c-66cb-9ea03571dc00_public.jpg`,featured:false,onSale:false,sortOrder:79},
-  {id:`pg-cjc-ipa`,slug:`cjc-1295-ipamorelin-peptigen-5mg-5mg`,name:`CJC-1295 / Ipamorelin`,presentation:`5mg / 5mg`,shortDescription:`Peptigen · 5mg / 5mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/850d45d4-2a00-4140-d77e-527fcd77cf00_public.jpg`,featured:false,onSale:false,sortOrder:80},
-  {id:`pg-dsip`,slug:`dsip-peptigen-10mg`,name:`DSIP`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:589,compareAtPrice:null,imageUrl:`imgs/b280ad8b-2b92-4a05-a158-f75101a3cd00_public.jpg`,featured:false,onSale:false,sortOrder:81},
-  {id:`pg-epit-10`,slug:`epithalon-peptigen-10mg`,name:`Epithalon`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:589,compareAtPrice:null,imageUrl:`imgs/c02f4944-2658-4c90-691d-ee811aae8900_public.jpg`,featured:false,onSale:false,sortOrder:82},
-  {id:`pg-epit-50`,slug:`epithalon-peptigen-50mg`,name:`Epithalon`,presentation:`50mg`,shortDescription:`Peptigen · 50mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1229,compareAtPrice:null,imageUrl:`imgs/feb51639-9ef7-42ec-2968-47f4be7a0900_public.jpg`,featured:false,onSale:false,sortOrder:83},
-  {id:`pg-follistatin`,slug:`follistatin-peptigen-10mg`,name:`Follistatin`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/7c92419e-999b-4546-d8fe-0be7ae19b200_public.jpg`,featured:false,onSale:false,sortOrder:84},
-  {id:`pg-ghk`,slug:`ghk-cu-peptigen-100mg`,name:`GHK-Cu`,presentation:`100mg`,shortDescription:`Peptigen · 100mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:889,compareAtPrice:null,imageUrl:`imgs/bcb6a066-a572-4bfd-c1d4-af988bad7b00_public.jpg`,featured:false,onSale:false,sortOrder:85},
-  {id:`pg-glow`,slug:`glow-peptigen-70mg`,name:`Glow`,presentation:`70mg`,shortDescription:`Peptigen · 70mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:989,compareAtPrice:null,imageUrl:`imgs/6a547c0d-0f6a-4075-e865-511738adf800_public.jpg`,featured:false,onSale:false,sortOrder:86},
-  {id:`pg-hghfrag`,slug:`hgh-frag-peptigen-10mg`,name:`HGH Frag`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:889,compareAtPrice:null,imageUrl:`imgs/482c3bb8-95c7-4882-241b-1d008269e800_public.jpg`,featured:false,onSale:false,sortOrder:87},
-  {id:`pg-igf-des`,slug:`igf-1-des-peptigen-1mg`,name:`IGF-1 DES`,presentation:`1mg`,shortDescription:`Peptigen · 1mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/bdcf787b-18e8-448c-5dd6-b3beb48de900_public.jpg`,featured:false,onSale:false,sortOrder:88},
-  {id:`pg-igf-lr3`,slug:`igf-1-lr3-peptigen-1mg`,name:`IGF-1 LR3`,presentation:`1mg`,shortDescription:`Peptigen · 1mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:779,compareAtPrice:null,imageUrl:`imgs/e18af6a2-3223-433f-19f2-9092447d9900_public.jpg`,featured:false,onSale:false,sortOrder:89},
-  {id:`pg-ipa`,slug:`ipamorelin-peptigen-10mg`,name:`Ipamorelin`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:629,compareAtPrice:null,imageUrl:`imgs/3deb9530-8b93-4a8b-150a-3a70f9e4e600_public.jpg`,featured:false,onSale:false,sortOrder:90},
-  {id:`pg-kiss`,slug:`kisspeptin-10-peptigen-10mg`,name:`Kisspeptin-10`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/ac5f2604-e516-4a89-0b3c-2b9020c1ea00_public.jpg`,featured:false,onSale:false,sortOrder:91},
-  {id:`pg-klow`,slug:`klow-peptigen-80mg`,name:`Klow`,presentation:`80mg`,shortDescription:`Peptigen · 80mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1230,compareAtPrice:null,imageUrl:`imgs/c6f93dbf-7b6a-4fee-d4b9-8aa5e1e81a00_public.jpg`,featured:false,onSale:false,sortOrder:92},
-  {id:`pg-kpv`,slug:`kpv-peptigen-10mg`,name:`KPV`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:629,compareAtPrice:null,imageUrl:`imgs/1dcad0d8-b7cc-4674-bdea-02cbab0dc500_public.jpg`,featured:false,onSale:false,sortOrder:93},
-  {id:`pg-mots-10`,slug:`mots-c-peptigen-10mg`,name:`MOTS-C`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/bd0998fc-6b94-48c0-d83e-3d4ab504cf00_public.jpg`,featured:false,onSale:false,sortOrder:94},
-  {id:`pg-mots-40`,slug:`mots-c-peptigen-40mg`,name:`MOTS-C`,presentation:`40mg`,shortDescription:`Peptigen · 40mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1229,compareAtPrice:null,imageUrl:`imgs/c264e0a3-36dc-437c-bc60-40a542a18000_public.jpg`,featured:false,onSale:false,sortOrder:95},
-  {id:`pg-nad`,slug:`nad-peptigen-1000mg`,name:`NAD+`,presentation:`1000mg`,shortDescription:`Peptigen · 1000mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:729,compareAtPrice:null,imageUrl:`imgs/62434086-82eb-4595-f9b8-90d6f9725100_public.jpg`,featured:false,onSale:false,sortOrder:96},
-  {id:`pg-pineal`,slug:`pinealon-peptigen-10mg`,name:`Pinealon`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:589,compareAtPrice:null,imageUrl:`imgs/5c3cadc7-f7ff-474e-9448-1e4f2edc9400_public.jpg`,featured:false,onSale:false,sortOrder:97},
-  {id:`pg-pt141`,slug:`pt-141-peptigen-10mg`,name:`PT-141`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:589,compareAtPrice:null,imageUrl:`imgs/0a82afe1-9eb0-4eba-bc33-291c1c225a00_public.jpg`,featured:false,onSale:false,sortOrder:98},
-  {id:`pg-reta`,slug:`retatrutide-peptigen-40mg-2`,name:`Retatrutide`,presentation:`40mg`,shortDescription:`Peptigen · 40mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1730,compareAtPrice:null,imageUrl:`imgs/5ec1cae9-4de3-44f2-d62d-a5a388960200_public.jpg`,featured:false,onSale:false,sortOrder:99},
-  {id:`pg-selank`,slug:`selank-peptigen-10mg`,name:`Selank`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/53e190c1-df85-44b6-e0e7-18548c00e900_public.jpg`,featured:false,onSale:false,sortOrder:100},
-  {id:`pg-semax`,slug:`semax-peptigen-10mg`,name:`Semax`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/3d4fbe7f-b58e-4ab6-06f1-cddff1e72b00_public.jpg`,featured:false,onSale:false,sortOrder:101},
-  {id:`pg-slu`,slug:`slu-pp-332-peptigen-5mg`,name:`SLU-PP-332`,presentation:`5mg`,shortDescription:`Peptigen · 5mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:719,compareAtPrice:null,imageUrl:`imgs/87e519d0-4042-4eb6-9b11-fd6a5a5ec700_public.jpg`,featured:false,onSale:false,sortOrder:102},
-  {id:`pg-ss31-10`,slug:`ss-31-peptigen-10mg`,name:`SS-31`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:579,compareAtPrice:null,imageUrl:`imgs/66eb0de3-2d53-4803-cd28-2b641d38f800_public.jpg`,featured:false,onSale:false,sortOrder:103},
-  {id:`pg-ss31-50`,slug:`ss-31-peptigen-50mg`,name:`SS-31`,presentation:`50mg`,shortDescription:`Peptigen · 50mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1419,compareAtPrice:null,imageUrl:`imgs/e8f2eaa9-72c8-4e43-02f0-61998c5cc700_public.jpg`,featured:false,onSale:false,sortOrder:104},
-  {id:`pg-tb500`,slug:`tb-500-peptigen-10mg`,name:`TB-500`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:719,compareAtPrice:null,imageUrl:`imgs/905c9580-e91d-48c4-0f28-a52bf6665a00_public.jpg`,featured:false,onSale:false,sortOrder:105},
-  {id:`pg-tb-bpc`,slug:`tb-500-bpc-157-peptigen-10mg-10mg`,name:`TB-500 / BPC-157`,presentation:`10mg / 10mg`,shortDescription:`Peptigen · 10mg / 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:829,compareAtPrice:null,imageUrl:`imgs/c64ce75d-f7f5-4573-41bc-4261291dcf00_public.jpg`,featured:false,onSale:false,sortOrder:106},
-  {id:`pg-tesa-10`,slug:`tesamorelin-peptigen-10mg`,name:`Tesamorelin`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:719,compareAtPrice:null,imageUrl:`imgs/3737dda1-4b57-4a5c-c0cf-f08af4531a00_public.jpg`,featured:false,onSale:false,sortOrder:107},
-  {id:`pg-tesa-20`,slug:`tesamorelin-peptigen-20mg`,name:`Tesamorelin`,presentation:`20mg`,shortDescription:`Peptigen · 20mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1119,compareAtPrice:null,imageUrl:`imgs/90a2faae-197c-48b1-79e2-6343a71b3000_public.jpg`,featured:false,onSale:false,sortOrder:108},
-  {id:`pg-thymo`,slug:`thymosin-alpha-1-peptigen-10mg`,name:`Thymosin Alpha-1`,presentation:`10mg`,shortDescription:`Peptigen · 10mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:679,compareAtPrice:null,imageUrl:`imgs/29c9d86e-a13e-48fb-6cb8-035cdfd6c300_public.jpg`,featured:false,onSale:false,sortOrder:109},
-  {id:`pg-tirze`,slug:`tirzepatide-peptigen-60mg`,name:`Tirzepatide`,presentation:`60mg`,shortDescription:`Peptigen · 60mg`,categorySlug:`peptideos`,brand:`Peptigen`,price:1119,compareAtPrice:null,imageUrl:`imgs/7d0f08f0-a006-432a-8ca7-854b7379d500_public.jpg`,featured:false,onSale:false,sortOrder:110},
-  {id:`pg-slu-cap`,slug:`slu-pp-332-capsule-peptigen`,name:`SLU-PP-332 (Capsule)`,presentation:`Cápsulas`,shortDescription:`Peptigen · Cápsulas (Oral) · Agonista ERR oral de alta biodisponibilidade`,categorySlug:`peptideos`,brand:`Peptigen`,price:0,compareAtPrice:null,imageUrl:`imgs/87e519d0-4042-4eb6-9b11-fd6a5a5ec700_public.jpg`,featured:false,onSale:false,sortOrder:111}
-];
-
-const PRODUTOS = PRODUCTS_DATA.map(p => ({
-  nome: p.name,
-  marca: p.brand,
-  origem: p.brand,
-  tamanho: p.presentation,
-  preco: (p.price === 0 || p.price == null) ? 'Consultar' : `R$ ${Number(p.price).toFixed(2).replace('.', ',')}`,
-  categoria: p.categorySlug,
-  destaque: !!p.featured,
-  descricao: p.shortDescription,
-  foto: p.imageUrl || '',
-  esgotado: !!p.isSoldOut
-}));
-
 const wa = (texto) => 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto);
-const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-document.querySelectorAll('[data-marca]').forEach(el => el.textContent = CONFIG.marca);
 document.querySelectorAll('[data-wa]').forEach(a => {
   a.href = wa(`Olá! Vim pelo site da ${CONFIG.marca} e quero tirar uma dúvida.`);
-  a.target = '_blank'; a.rel = 'noopener';
+  a.target = '_blank';
+  a.rel = 'noopener';
 });
-
-// Botão "Sou revendedor" → WhatsApp com mensagem de catálogo para revenda
-const btnRevenda = document.getElementById('btn-revenda');
-if (btnRevenda) {
-  btnRevenda.href = wa(`Olá! Vim pelo site da ${CONFIG.marca} e quero o catálogo para revenda.`);
-  btnRevenda.target = '_blank';
-  btnRevenda.rel = 'noopener';
-}
 
 // Faixa de marcas
 const track = document.getElementById('marcas');
 [false, true].forEach(dup => {
-  const g = document.createElement('div');
-  g.className = 'mq-group';
-  if (dup) g.setAttribute('aria-hidden', 'true');
+  const group = document.createElement('div');
+  group.className = 'mq-group';
+  if (dup) group.setAttribute('aria-hidden', 'true');
   CONFIG.marcas.forEach(m => {
-    const s = document.createElement('span');
-    s.className = 'mq-item';
+    const item = document.createElement('span');
+    item.className = 'mq-item';
     if (typeof m === 'object' && m.logo) {
       const img = document.createElement('img');
       img.src = m.logo;
       img.alt = m.nome || '';
       img.loading = 'lazy';
-      s.appendChild(img);
+      item.appendChild(img);
     } else {
-      s.textContent = typeof m === 'string' ? m : (m.nome || '');
+      item.textContent = typeof m === 'string' ? m : (m.nome || '');
     }
-    g.appendChild(s);
+    group.appendChild(item);
   });
-  track.appendChild(g);
+  track.appendChild(group);
 });
 
-// Produtos
-const catPorId = Object.fromEntries(CATEGORIAS.map(c => [c.id, c]));
-
-const pote = (cor) => `<svg width="120" height="160" viewBox="0 0 120 160" role="img" aria-label="Foto do produto em breve"><rect x="22" y="6" width="76" height="22" rx="5" fill="#16222B"/><rect x="12" y="28" width="96" height="128" rx="14" fill="${cor}"/><rect x="12" y="66" width="96" height="48" fill="#F6F8F8"/><rect x="24" y="78" width="52" height="8" rx="2" fill="#16222B"/><rect x="24" y="94" width="34" height="6" rx="2" fill="#7B8890"/></svg>`;
-
-const ICONE_SELO = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>';
-const ICONE_CARRINHO = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 12.2a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.5L22 7H6"/></svg>';
-
-function fotoDe(p) {
-  return p.foto ? `<img src="${esc(p.foto)}" alt="${esc(p.nome)}" loading="lazy">` : pote(catPorId[p.categoria]?.pote || '#2F6FD0');
-}
-
-// Preço + PIX + parcelas (calculados a partir do preço)
-function precoHTML(p) {
-  const v = valor(p.preco);
-  if (v === null) return `<span class="consulta">${esc(p.preco)}</span>`;
-  const pix = CONFIG.descontoPix > 0 ? `<span class="pix">PIX (${brl(v * (1 - CONFIG.descontoPix / 100))})</span>` : '';
-  const parc = CONFIG.parcelas > 1 ? `<span class="parc">ou ${CONFIG.parcelas}x de ${brl(v / CONFIG.parcelas)} s/ juros</span>` : '';
-  return `<span class="valor">${brl(v)}</span>${pix}${parc}`;
-}
-
-// Pesquisa: ignora maiúsculas e acentos, e aceita várias palavras em qualquer ordem
-const normalizar = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
-const campoBusca = document.getElementById('busca');
-const btnLimpar = document.getElementById('busca-limpar');
-let termo = '';
-
-function bate(p) {
-  if (!termo) return true;
-  const texto = normalizar(`${p.nome} ${p.marca} ${p.origem || ''} ${p.tamanho} ${catPorId[p.categoria]?.nome || ''}`);
-  return normalizar(termo).split(/\s+/).filter(Boolean).every(palavra => texto.includes(palavra));
-}
-
-function renderProdutos() {
-  const itens = PRODUTOS.filter(bate);
-  if (!itens.length) {
-    document.getElementById('grade').innerHTML =
-      `<p class="vazio">Nenhum produto encontrado para “${esc(termo)}”. <button type="button" data-limpar>Limpar pesquisa</button></p>`;
-    document.getElementById('contagem').textContent = '0 produtos';
-    return;
-  }
-  document.getElementById('grade').innerHTML = itens.map(p => {
-    const k = esc(chave(p));
-    const esgotado = !!p.esgotado;
-    const selo = esgotado
-      ? `<span class="card-selo esgotado-selo">Esgotado</span>`
-      : (p.destaque ? `<span class="card-selo">${ICONE_SELO} Destaque</span>` : '');
-    const btnComprar = esgotado
-      ? `<button type="button" class="b-comprar esgotado-btn" disabled>Esgotado</button>`
-      : `<button type="button" class="b-comprar" data-add="${k}">${ICONE_CARRINHO} Comprar</button>`;
-    return `<article class="card${esgotado ? ' esgotado' : ''}">
-      ${selo}
-      <div class="card-foto">${fotoDe(p)}</div>
-      <div class="card-corpo">
-        <div class="card-linha">
-          <span class="card-origem">${esc(p.origem || p.marca)}</span>
-          <span class="card-tam">${esc(p.tamanho)}</span>
-        </div>
-        <h3>${esc(p.nome)}</h3>
-        <div class="card-preco">${precoHTML(p)}</div>
-        <div class="card-botoes">
-          <button type="button" class="b-detalhes" data-det="${k}">Detalhes</button>
-          ${btnComprar}
-        </div>
-      </div>
-    </article>`;
-  }).join('');
-  const n = itens.length;
-  document.getElementById('contagem').textContent =
-    `${n} ${n === 1 ? 'produto' : 'produtos'}` + (termo ? ` para “${termo}”` : '');
-}
-
-function limparBusca() {
-  campoBusca.value = ''; termo = ''; btnLimpar.hidden = true;
-  renderProdutos(); campoBusca.focus();
-}
-
-campoBusca.addEventListener('input', () => {
-  termo = campoBusca.value.trim();
-  btnLimpar.hidden = !campoBusca.value;
-  renderProdutos();
-});
-campoBusca.addEventListener('keydown', e => { if (e.key === 'Escape') limparBusca(); });
-document.getElementById('busca-form').addEventListener('submit', e => e.preventDefault());
-btnLimpar.addEventListener('click', limparBusca);
-document.getElementById('grade').addEventListener('click', e => { if (e.target.closest('[data-limpar]')) limparBusca(); });
-
-/* ===== Carrinho ===== */
-function chave(p) { return p.nome + ' | ' + p.tamanho; }
-const PROD = Object.fromEntries(PRODUTOS.map(p => [chave(p), p]));
-const ler = (k, padrao) => { try { const v = JSON.parse(localStorage.getItem(k)); return v ?? padrao; } catch { return padrao; } };
-const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
-
-let carrinho = ler('carrinho', {});              // { chave: quantidade }
-for (const k in carrinho) if (!PROD[k] || !(carrinho[k] > 0)) delete carrinho[k];
-
-// "R$ 1.299,90" -> 1299.9 ; "[R$ —]" -> null (preço a confirmar)
-function valor(preco) {
-  const m = String(preco).replace(/\./g, '').match(/(\d+)(?:,(\d{1,2}))?/);
-  return m ? Number(m[1] + '.' + (m[2] || '0')) : null;
-}
-const brl = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
-const dlg = document.getElementById('carrinho');
-const form = document.getElementById('car-form');
-const el = (id) => document.getElementById(id);
-
-function itensCarrinho() {
-  return Object.entries(carrinho).map(([k, q]) => ({ p: PROD[k], k, q }));
-}
-
-function totais() {
-  const itens = itensCarrinho();
-  const qtd = itens.reduce((s, i) => s + i.q, 0);
-  const conhecido = itens.every(i => valor(i.p.preco) !== null);
-  const soma = itens.reduce((s, i) => s + (valor(i.p.preco) || 0) * i.q, 0);
-  return { itens, qtd, texto: conhecido ? brl(soma) : 'A confirmar' };
-}
-
-function renderCarrinho() {
-  const { itens, qtd, texto } = totais();
-  const badge = el('badge');
-  badge.textContent = qtd;
-  badge.setAttribute('aria-label', `${qtd} ${qtd === 1 ? 'item' : 'itens'} no carrinho`);
-  badge.toggleAttribute('data-zero', qtd === 0);
-
-  el('car-lista').innerHTML = itens.map(({ p, k, q }) => {
-    const v = valor(p.preco);
-    return `<li class="car-item">
-      <div class="car-item-info">
-        <b>${esc(p.nome)}</b>
-        <span>${esc(p.tamanho)} · ${v === null ? esc(p.preco) : brl(v)}</span>
-        <button type="button" class="car-remover" data-rm="${esc(k)}">Remover</button>
-      </div>
-      <div class="qtd" role="group" aria-label="Quantidade de ${esc(p.nome)}">
-        <button type="button" data-menos="${esc(k)}" aria-label="Diminuir">−</button>
-        <output>${q}</output>
-        <button type="button" data-mais="${esc(k)}" aria-label="Aumentar">+</button>
-      </div>
-    </li>`;
-  }).join('');
-  el('car-subtotal').textContent = texto;
-
-  const vazio = itens.length === 0;
-  el('car-vazio').hidden = !vazio;
-  el('car-total').hidden = vazio;
-  el('car-dados').hidden = vazio;
-  el('car-pe').hidden = vazio;
-  gravar('carrinho', carrinho);
-}
-
-function mudar(k, delta) {
-  carrinho[k] = (carrinho[k] || 0) + delta;
-  if (carrinho[k] <= 0) delete carrinho[k];
-  el('car-aviso').hidden = true;
-  renderCarrinho();
-}
-
-// Botão "Adicionar ao carrinho" nos cards
-document.getElementById('grade').addEventListener('click', e => {
-  const b = e.target.closest('[data-add]'); if (!b) return;
-  mudar(b.dataset.add, 1);
-  b.textContent = 'Adicionado ✓'; b.classList.add('ok');
-  clearTimeout(b._t);
-  b._t = setTimeout(() => { b.innerHTML = ICONE_CARRINHO + ' Comprar'; b.classList.remove('ok'); }, 1400);
-});
-
-// Detalhes do produto
-const det = document.getElementById('detalhe');
-document.getElementById('grade').addEventListener('click', e => {
-  const b = e.target.closest('[data-det]'); if (!b) return;
-  const p = PROD[b.dataset.det];
-  el('det-foto').innerHTML = fotoDe(p);
-  el('det-origem').textContent = p.origem || p.marca;
-  el('det-tam').textContent = p.tamanho;
-  el('det-nome').textContent = p.nome;
-  el('det-desc').textContent = p.descricao || 'Fale com a gente no WhatsApp para mais informações sobre este produto.';
-  el('det-preco').innerHTML = precoHTML(p);
-  const c = el('det-comprar');
-  if (p.esgotado) {
-    c.dataset.add = '';
-    c.innerHTML = 'Esgotado';
-    c.disabled = true;
-    c.classList.add('esgotado-btn');
-  } else {
-    c.dataset.add = b.dataset.det;
-    c.innerHTML = ICONE_CARRINHO + ' Adicionar ao carrinho';
-    c.disabled = false;
-    c.classList.remove('esgotado-btn');
-  }
-  det.showModal();
-});
-el('det-comprar').addEventListener('click', e => { mudar(e.currentTarget.dataset.add, 1); det.close(); dlg.showModal(); });
-el('det-fechar').addEventListener('click', () => det.close());
-det.addEventListener('click', e => { if (e.target === det) det.close(); });
-
-// Abrir / fechar
-el('abrir-carrinho').addEventListener('click', () => { dlg.showModal(); });
-el('fechar-carrinho').addEventListener('click', () => dlg.close());
-el('car-ver').addEventListener('click', () => dlg.close());
-dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-
-// Quantidades
-el('car-lista').addEventListener('click', e => {
-  const t = e.target.closest('button'); if (!t) return;
-  if (t.dataset.mais) mudar(t.dataset.mais, 1);
-  else if (t.dataset.menos) mudar(t.dataset.menos, -1);
-  else if (t.dataset.rm) mudar(t.dataset.rm, -carrinho[t.dataset.rm]);
-});
-
-el('car-limpar').addEventListener('click', () => {
-  carrinho = {}; el('car-aviso').hidden = true; renderCarrinho();
-});
-
-// Dados de entrega: lembrados neste navegador
-const CAMPOS = ['nome','cep','rua','numero','complemento','bairro','cidade','uf','pagamento','obs'];
-const salvo = ler('entrega', {});
-CAMPOS.forEach(n => { if (salvo[n]) form.elements[n].value = salvo[n]; });
-form.addEventListener('input', e => {
-  if (e.target.name) e.target.removeAttribute('aria-invalid');
-  gravar('entrega', Object.fromEntries(CAMPOS.map(n => [n, form.elements[n].value])));
-});
-
-// CEP: máscara + preenchimento automático do endereço (ViaCEP)
-const cepInput = form.elements.cep;
-cepInput.addEventListener('input', async () => {
-  const d = cepInput.value.replace(/\D/g, '').slice(0, 8);
-  cepInput.value = d.length > 5 ? d.slice(0, 5) + '-' + d.slice(5) : d;
-  const status = el('cep-status');
-  status.textContent = '';
-  if (d.length !== 8) return;
-  status.textContent = 'Buscando endereço…';
-  try {
-    const r = await fetch(`https://viacep.com.br/ws/${d}/json/`);
-    const j = await r.json();
-    if (j.erro) { status.textContent = 'CEP não encontrado. Preencha o endereço.'; return; }
-    form.elements.rua.value = j.logradouro || form.elements.rua.value;
-    form.elements.bairro.value = j.bairro || form.elements.bairro.value;
-    form.elements.cidade.value = j.localidade || '';
-    form.elements.uf.value = j.uf || '';
-    status.textContent = '';
-    form.dispatchEvent(new Event('input'));
-    form.elements[form.elements.rua.value ? 'numero' : 'rua'].focus();
-  } catch {
-    status.textContent = 'Não foi possível buscar o CEP. Preencha manualmente.';
-  }
-});
-form.elements.uf.addEventListener('input', e => { e.target.value = e.target.value.toUpperCase(); });
-
-// Finalizar: valida e abre o WhatsApp com o pedido completo
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const erro = el('car-erro');
-  const { itens, texto } = totais();
-  if (!itens.length) return;
-
-  const invalidos = [];
-  form.querySelectorAll('[required]').forEach(c => {
-    let ok = c.value.trim() !== '';
-    if (c.name === 'cep') ok = c.value.replace(/\D/g, '').length === 8;
-    if (c.name === 'uf') ok = /^[A-Za-z]{2}$/.test(c.value.trim());
-    c.setAttribute('aria-invalid', String(!ok));
-    if (!ok) invalidos.push(c);
-  });
-  if (invalidos.length) {
-    erro.textContent = 'Preencha os campos destacados para finalizar.';
-    erro.hidden = false;
-    invalidos[0].focus();
-    return;
-  }
-  erro.hidden = true;
-
-  const f = (n) => form.elements[n].value.trim();
-  const linhas = itens.map(({ p, q }) => {
-    const v = valor(p.preco);
-    return `• ${q}x ${p.nome} (${p.tamanho})${v === null ? '' : ' — ' + brl(v * q)}`;
-  });
-  const msg = [
-    `Olá! Quero fazer um pedido pelo site da ${CONFIG.marca}:`,
-    '',
-    '*Itens do pedido*',
-    ...linhas,
-    '',
-    `*Subtotal:* ${texto} (frete a combinar)`,
-    '',
-    '*Entrega*',
-    `Nome: ${f('nome')}`,
-    `Endereço: ${f('rua')}, ${f('numero')}${f('complemento') ? ' - ' + f('complemento') : ''}`,
-    `Bairro: ${f('bairro')}`,
-    `Cidade: ${f('cidade')}/${f('uf').toUpperCase()}`,
-    `CEP: ${f('cep')}`,
-    '',
-    `*Pagamento:* ${f('pagamento')}`,
-    ...(f('obs') ? ['', `*Observações:* ${f('obs')}`] : [])
-  ].join('\n');
-
-  const janela = window.open(wa(msg), '_blank');
-  if (janela) janela.opener = null; else location.href = wa(msg);
-  el('car-aviso').hidden = false;
-});
-
-
-/* Menu mobile */
-(function(){
-  const btn = document.getElementById('btn-menu');
+// Menu mobile independente do restante da loja
+(() => {
+  const button = document.getElementById('btn-menu');
   const menu = document.getElementById('menu-mobile');
-  if (!btn || !menu) return;
-  const icoAbrir = btn.querySelector('.ico-abrir');
-  const icoFechar = btn.querySelector('.ico-fechar');
-  function fechar(){
+  if (!button || !menu) return;
+  const openIcon = button.querySelector('.ico-abrir');
+  const closeIcon = button.querySelector('.ico-fechar');
+  const closeMenu = () => {
     menu.hidden = true;
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Abrir menu');
-    if (icoAbrir) icoAbrir.hidden = false;
-    if (icoFechar) icoFechar.hidden = true;
-  }
-  function abrir(){
-    menu.hidden = false;
-    btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Fechar menu');
-    if (icoAbrir) icoAbrir.hidden = true;
-    if (icoFechar) icoFechar.hidden = false;
-  }
-  btn.addEventListener('click', () => menu.hidden ? abrir() : fechar());
-  menu.querySelectorAll('[data-fecha-menu]').forEach(a => a.addEventListener('click', fechar));
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-label', 'Abrir menu');
+    if (openIcon) openIcon.hidden = false;
+    if (closeIcon) closeIcon.hidden = true;
+  };
+  const toggleMenu = () => {
+    const opening = menu.hidden;
+    menu.hidden = !opening;
+    button.setAttribute('aria-expanded', String(opening));
+    button.setAttribute('aria-label', opening ? 'Fechar menu' : 'Abrir menu');
+    if (openIcon) openIcon.hidden = opening;
+    if (closeIcon) closeIcon.hidden = !opening;
+  };
+  button.addEventListener('click', toggleMenu);
+  menu.querySelectorAll('[data-fecha-menu]').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
 })();
-
-renderCarrinho();
-renderProdutos();
 </script>
 </body>
 </html>
