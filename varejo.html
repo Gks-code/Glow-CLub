@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Medicamentos | GLOW CLUB</title>
-<meta name="description" content="Medicamentos com procedência: escolha o produto, chame no WhatsApp e receba o pedido confirmado por escrito.">
+<meta name="description" content="Medicamentos com procedência, direto na sua porta. Escolha o produto e receba confirmação completa por WhatsApp antes de pagar.">
 <meta name="theme-color" content="#E9EDEE">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +55,26 @@ a{color:var(--accent)} a:hover{color:#1A2F9A}
 .hero h1{font-size:clamp(64px,9vw,132px);line-height:.88;letter-spacing:-.01em}
 .hero p{margin:0;max-width:34em;font-size:19px;line-height:1.55;color:var(--ink-2)}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+/* Dual path - Para você / Para sua revenda — identidade visual GLOW CLUB */
+.dual-path{position:relative;isolation:isolate;overflow:hidden;background:var(--ink);color:var(--on-ink);padding-block:88px 92px;border-block:2px solid var(--ink)}
+.dual-path::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 0;width:9px;background:var(--accent)}
+.dual-path::after{content:"GC";position:absolute;z-index:-1;right:clamp(12px,7vw,110px);bottom:-.28em;font-size:clamp(190px,30vw,430px);font-weight:900;line-height:1;letter-spacing:-.09em;color:rgba(243,246,246,.045);pointer-events:none}
+.dual-path .wrap{position:relative;display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.dual-path-main{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.dual-path .eyebrow{display:flex;align-items:center;gap:12px;margin:0;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#B9C4CA}
+.dual-path .eyebrow::before{content:"";display:block;width:28px;height:2px;background:var(--accent)}
+.dual-path h2{font-size:clamp(48px,7vw,92px);line-height:.9;letter-spacing:-.035em;margin:0;color:var(--on-ink)}
+.dual-path h2 .accent{color:#8FA2FF}
+.dual-path p{margin:0;max-width:32em;font-size:18px;line-height:1.55;color:#D0D9DD}
+.dual-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+.dual-btn{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:76px;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;transition:transform .15s,background .15s,border-color .15s}
+.dual-btn span{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.82}
+.dual-btn strong{font-size:20px;font-weight:800;line-height:1.2;margin-top:3px}
+.dual-btn-primary{background:var(--accent);color:#fff;border:2px solid var(--accent)}
+.dual-btn-primary:hover{background:#1F3BBE;border-color:#1F3BBE;color:#fff;transform:translateY(-2px)}
+.dual-btn-secondary{background:transparent;border:2px solid #AAB7BE;color:var(--on-ink)}
+.dual-btn-secondary:hover{background:rgba(255,255,255,.08);border-color:#fff;color:#fff;transform:translateY(-2px)}
 
 /* Produtos */
 .produtos{background:var(--bg-2);border-top:2px solid var(--ink)}
@@ -218,6 +238,9 @@ footer .nav a:first-child{color:var(--on-ink)}
   .hero { padding-block: 36px 48px; gap: 24px; }
   .hero h1 { font-size: clamp(40px, 11vw, 64px); }
   .hero p { font-size: 16px; }
+  .dual-path { padding-block: 48px 56px; }
+  .dual-path h2 { font-size: clamp(40px, 9vw, 64px); }
+  .dual-path p { font-size: 16px; }
   .produtos .wrap { padding-block: 40px 56px; gap: 18px; }
   .produtos h2, .sec-title { font-size: clamp(32px, 8vw, 48px); }
   .grade { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
@@ -248,6 +271,11 @@ footer .nav a:first-child{color:var(--on-ink)}
   .hero p { font-size: 15px; line-height: 1.5; }
   .actions { gap: 8px; }
   .actions .btn { min-height: 44px; padding: 0 18px; font-size: 15px; }
+  .dual-path { padding-block: 40px 48px; }
+  .dual-path h2 { font-size: clamp(34px, 10vw, 48px); }
+  .dual-path p { font-size: 15px; }
+  .dual-actions { flex-direction: column; }
+  .dual-btn { width: 100%; min-height: 64px; }
   .produtos .wrap { padding-block: 32px 48px; gap: 14px; }
   .produtos h2, .sec-title { font-size: 34px; }
   .busca input { min-height: 46px; font-size: 15px; }
@@ -349,7 +377,7 @@ footer .nav a:first-child{color:var(--on-ink)}
     <a class="logo" href="#inicio"><img src="glowclub-logo.svg" alt="Glow Club" width="156" height="64"></a>
 
     <nav class="nav nav-desktop" aria-label="Principal">
-      <a href="#produtos">Varejo</a>
+      <a href="index.html">Home</a>
       <a class="sub" href="atacado.html">Revendedor</a>
     </nav>
 
@@ -371,7 +399,7 @@ footer .nav a:first-child{color:var(--on-ink)}
   </div>
 
   <div class="menu-mobile" id="menu-mobile" hidden>
-    <a href="#produtos" data-fecha-menu>Varejo</a>
+    <a href="index.html" data-fecha-menu>Home</a>
     <a href="atacado.html" data-fecha-menu>Revendedor</a>
     <a href="#duvidas" data-fecha-menu>Dúvidas</a>
   </div>
@@ -440,6 +468,8 @@ footer .nav a:first-child{color:var(--on-ink)}
 </section>
 
 
+
+  
 
   <section class="produtos" id="produtos">
     <div class="wrap">
@@ -648,9 +678,17 @@ const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','
 
 document.querySelectorAll('[data-marca]').forEach(el => el.textContent = CONFIG.marca);
 document.querySelectorAll('[data-wa]').forEach(a => {
-  a.href = wa(`Olá! Vim pelo site da ${CONFIG.marca} e quero tirar uma dúvida sobre um produto.`);
+  a.href = wa(`Olá! Vim pelo site da ${CONFIG.marca} e quero tirar uma dúvida.`);
   a.target = '_blank'; a.rel = 'noopener';
 });
+
+// Botão "Sou revendedor" → WhatsApp com mensagem de catálogo para revenda
+const btnRevenda = document.getElementById('btn-revenda');
+if (btnRevenda) {
+  btnRevenda.href = wa(`Olá! Vim pelo site da ${CONFIG.marca} e quero o catálogo para revenda.`);
+  btnRevenda.target = '_blank';
+  btnRevenda.rel = 'noopener';
+}
 
 // Faixa de marcas
 const track = document.getElementById('marcas');
